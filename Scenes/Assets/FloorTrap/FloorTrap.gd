@@ -68,7 +68,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		anim_name == "TrapActivateRight" or anim_name == "TrapActivate":
 		trap_activated = false
 	if (anim_name == "TrapActivateLeft" or anim_name == "TrapActivateMiddle" or \
-		anim_name == "TrapActivateRight" or anim_name == "TrapActivate")  and game.player_has_fallen :
+		anim_name == "TrapActivateRight" or anim_name == "TrapActivate")  and GameManager.player_has_fallen :
 
 		reset_trap()
 

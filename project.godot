@@ -44,7 +44,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
-game="*res://Scripts/game.gd"
+GameManager="*res://Scripts/GameManager.gd"
 
 [display]
 
