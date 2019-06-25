@@ -247,5 +247,6 @@ script = ExtResource( 5 )
 script = ExtResource( 6 )
 
 [node name="Timer" type="Timer" parent="States/Fall"]
+wait_time = 1.5
 one_shot = true
 [connection signal="timeout" from="States/Fall/Timer" to="States/Fall" method="_on_Timer_timeout"]
