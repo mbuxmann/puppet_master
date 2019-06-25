@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://GFX/wall.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 16, 16 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 16, 8 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 8, 16 )
+
+[node name="Walls" type="Node2D"]
+
+[node name="WallOne" type="Sprite" parent="."]
+position = Vector2( 32, 32 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 32, 32, 32, 32 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="WallOne" type="StaticBody2D" parent="WallOne"]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallOne/WallOne"]
+shape = SubResource( 1 )
+
+[node name="WallTwo" type="Sprite" parent="."]
+position = Vector2( 96, 32 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="WallTwo" type="StaticBody2D" parent="WallTwo"]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallTwo/WallTwo"]
+shape = SubResource( 2 )
+
+[node name="WallThree" type="Sprite" parent="."]
+position = Vector2( 160, 32 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 16, 32 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="WallThree" type="StaticBody2D" parent="WallThree"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallThree/WallThree"]
+shape = SubResource( 3 )

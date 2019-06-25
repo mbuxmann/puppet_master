@@ -1,0 +1,34 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scenes/Interface/HeartManager/HeartManager.gd" type="Script" id=1]
+[ext_resource path="res://GFX/Hearts/heart003.png" type="Texture" id=2]
+[ext_resource path="res://GFX/Hearts/heart004.png" type="Texture" id=3]
+[ext_resource path="res://GFX/Hearts/heart006.png" type="Texture" id=4]
+[ext_resource path="res://GFX/Hearts/heart001.png" type="Texture" id=5]
+[ext_resource path="res://GFX/Hearts/heart002.png" type="Texture" id=6]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "Half",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "Empty",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "Full",
+"speed": 7.0
+} ]
+
+[node name="HeartManager" type="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="Hearts" type="AnimatedSprite" parent="."]
+position = Vector2( 32, 19 )
+frames = SubResource( 1 )
+animation = "Empty"
