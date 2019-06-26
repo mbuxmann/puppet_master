@@ -10,7 +10,6 @@ func _ready():
 		"TrapNormal":
 			$AnimationPlayer.play("TrapIdle")
 		"TrapLeft":
-			print('test')
 			$AnimationPlayer.play("TrapIdleLeft")
 		"TrapMiddle":
 			$AnimationPlayer.play("TrapIdleMiddle")
@@ -40,6 +39,7 @@ func activate_trap():
 			$AnimationPlayer.play("TrapActivateRight")
 	trap_activated = true
 	
+# warning-ignore:unused_argument
 func _process(delta):
 	if trap_activated:
 		check_for_player()
@@ -67,11 +67,4 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "TrapActivateLeft" or anim_name == "TrapActivateMiddle" or \
 		anim_name == "TrapActivateRight" or anim_name == "TrapActivate":
 		trap_activated = false
-	if (anim_name == "TrapActivateLeft" or anim_name == "TrapActivateMiddle" or \
-		anim_name == "TrapActivateRight" or anim_name == "TrapActivate")  and GameManager.player_has_fallen :
-
-		reset_trap()
-
-func _input(event):
-	if event.is_action_pressed('z'):
-		reset_trap()
+	

@@ -3,9 +3,9 @@
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://GFX/Room101.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/Assets/Wall/wall_tiles.tres" type="TileSet" id=3]
-[ext_resource path="res://Scenes/Assets/FloorTrap/FloorTrap.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/Assets/FloorHole/FloorHole.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scenes/Assets/Door/Door.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Assets/Door/Door.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Assets/FloorTrap/FloorTrap.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Assets/FloorHole/FloorHole.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Interface/Interface.tscn" type="PackedScene" id=7]
 
 [node name="Level1" type="Node2D"]
@@ -17,6 +17,7 @@ z_index = 10
 [node name="Rooms" type="Node" parent="."]
 
 [node name="Room101" type="Node2D" parent="Rooms"]
+editor/display_folded = true
 
 [node name="Background" type="Sprite" parent="Rooms/Room101"]
 texture = ExtResource( 2 )
@@ -42,48 +43,32 @@ tile_data = PoolIntArray( -65535, 1, 0, -65533, 1, 0, -65531, 1, 0, -65529, 1, 0
 
 [node name="FloorTraps" type="Node2D" parent="Rooms/Room101"]
 
-[node name="FloorTrap" parent="Rooms/Room101/FloorTraps" instance=ExtResource( 4 )]
-position = Vector2( 176, 192 )
-trap_used = "TrapLeft"
-
-[node name="FloorTrap2" parent="Rooms/Room101/FloorTraps" instance=ExtResource( 4 )]
-position = Vector2( 208, 192 )
-trap_used = "TrapMiddle"
-
-[node name="FloorTrap3" parent="Rooms/Room101/FloorTraps" instance=ExtResource( 4 )]
-position = Vector2( 240, 192 )
-trap_used = "TrapRight"
-
 [node name="FloorHoles" type="Node2D" parent="Rooms/Room101"]
 
-[node name="FloorHole" parent="Rooms/Room101/FloorHoles" instance=ExtResource( 5 )]
-position = Vector2( 272, 112 )
-HoleUsed = "HoleNormal"
-
 [node name="Doors" type="Node2D" parent="Rooms/Room101"]
-editor/display_folded = true
 
-[node name="TopDoor" parent="Rooms/Room101/Doors" instance=ExtResource( 6 )]
+[node name="TopDoor" parent="Rooms/Room101/Doors" instance=ExtResource( 4 )]
 position = Vector2( 256, 16 )
+next_room_target_node = NodePath("../../../Room103")
+opened = true
 
-[node name="BottomDoor" parent="Rooms/Room101/Doors" instance=ExtResource( 6 )]
+[node name="BottomDoor" parent="Rooms/Room101/Doors" instance=ExtResource( 4 )]
 position = Vector2( 256, 272 )
 rotation = 3.14159
 
-[node name="RightDoor" parent="Rooms/Room101/Doors" instance=ExtResource( 6 )]
+[node name="RightDoor" parent="Rooms/Room101/Doors" instance=ExtResource( 4 )]
 position = Vector2( 496, 144 )
 rotation = 1.5708
-door_target_node = NodePath("../../../Room102/Doors/LeftDoor")
-camera_target_node = NodePath("../../../Room102/Camera2D")
+next_room_target_node = NodePath("../../../Room102")
 opened = true
 
-[node name="LeftDoor" parent="Rooms/Room101/Doors" instance=ExtResource( 6 )]
+[node name="LeftDoor" parent="Rooms/Room101/Doors" instance=ExtResource( 4 )]
 position = Vector2( 16, 144 )
 rotation = -1.5708
 
 [node name="Room102" type="Node2D" parent="Rooms"]
 editor/display_folded = true
-position = Vector2( 544, 0 )
+position = Vector2( 512, 0 )
 
 [node name="Sprite" type="Sprite" parent="Rooms/Room102"]
 texture = ExtResource( 2 )
@@ -102,25 +87,93 @@ format = 1
 tile_data = PoolIntArray( 2, 1, 0, 4, 1, 0, 6, 1, 0, 8, 1, 0, 10, 1, 0, 12, 1, 0, 13, 1, 0, 15, 2, 0, 17, 1, 0, 18, 1, 0, 20, 1, 0, 22, 1, 0, 24, 1, 0, 26, 1, 0, 28, 1, 0, 131072, 1, 0, 131102, 1, 0, 262144, 1, 0, 262174, 1, 0, 393216, 1, 0, 393246, 1, 0, 524288, 3, 0, 524319, 3, 0, 655360, 1, 0, 655390, 1, 0, 786432, 1, 0, 786462, 1, 0, 917504, 1, 0, 917534, 1, 0, 1048578, 1, 0, 1048580, 1, 0, 1048582, 1, 0, 1048584, 1, 0, 1048586, 1, 0, 1048588, 1, 0, 1048589, 1, 0, 1048593, 1, 0, 1048595, 1, 0, 1048596, 1, 0, 1048598, 1, 0, 1048600, 1, 0, 1048602, 1, 0, 1048604, 1, 0, 1114127, 2, 0 )
 
 [node name="Doors" type="Node2D" parent="Rooms/Room102"]
+editor/display_folded = true
 
-[node name="LeftDoor" parent="Rooms/Room102/Doors" instance=ExtResource( 6 )]
+[node name="LeftDoor" parent="Rooms/Room102/Doors" instance=ExtResource( 4 )]
 position = Vector2( 16, 144 )
 rotation = -1.5708
-door_target_node = NodePath("../../../Room101/Doors/RightDoor")
-camera_target_node = NodePath("../../../Room101/Camera2D")
+next_room_target_node = NodePath("../../../Room101")
 opened = true
 
-[node name="TopDoor" parent="Rooms/Room102/Doors" instance=ExtResource( 6 )]
+[node name="TopDoor" parent="Rooms/Room102/Doors" instance=ExtResource( 4 )]
 position = Vector2( 256, 16 )
 
-[node name="BottomDoor" parent="Rooms/Room102/Doors" instance=ExtResource( 6 )]
+[node name="BottomDoor" parent="Rooms/Room102/Doors" instance=ExtResource( 4 )]
 position = Vector2( 256, 272 )
 rotation = -3.14159
 
-[node name="RightDoor" parent="Rooms/Room102/Doors" instance=ExtResource( 6 )]
+[node name="RightDoor" parent="Rooms/Room102/Doors" instance=ExtResource( 4 )]
 position = Vector2( 496, 144 )
 rotation = 1.5708
 
-[node name="Traps" type="Node2D" parent="Rooms/Room102"]
+[node name="FloorTraps" type="Node2D" parent="Rooms/Room102"]
+
+[node name="Room103" type="Node2D" parent="Rooms"]
+editor/display_folded = true
+position = Vector2( 0, -288 )
+
+[node name="Background" type="Sprite" parent="Rooms/Room103"]
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Camera2D" type="Camera2D" parent="Rooms/Room103"]
+anchor_mode = 0
+drag_margin_h_enabled = false
+drag_margin_v_enabled = false
+drag_margin_left = 0.0
+drag_margin_top = 0.0
+drag_margin_right = 0.0
+drag_margin_bottom = 0.0
+
+[node name="Walls" type="TileMap" parent="Rooms/Room103"]
+visible = false
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 16, 16 )
+cell_tile_origin = 2
+collision_layer = 4
+format = 1
+tile_data = PoolIntArray( -65535, 1, 0, -65533, 1, 0, -65531, 1, 0, -65529, 1, 0, -65527, 1, 0, -65525, 1, 0, -65523, 1, 0, -65521, 2, 0, -65519, 1, 0, -65517, 1, 0, -65515, 1, 0, -65513, 1, 0, -65511, 1, 0, -65509, 1, 0, -65507, 1, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 65536, 1, 0, 65566, 1, 0, 131092, 1, 0, 196608, 1, 0, 196638, 1, 0, 327680, 1, 0, 327710, 1, 0, 327711, 1, 0, 458752, 3, 0, 458783, 3, 0, 589824, 1, 0, 589854, 1, 0, 720896, 1, 0, 720926, 1, 0, 851968, 1, 0, 851998, 1, 0, 983041, 1, 0, 983043, 1, 0, 983045, 1, 0, 983047, 1, 0, 983049, 1, 0, 983051, 1, 0, 983053, 1, 0, 983057, 1, 0, 983059, 1, 0, 983061, 1, 0, 983063, 1, 0, 983065, 1, 0, 983067, 1, 0, 983069, 1, 0, 1048591, 2, 0 )
+
+[node name="FloorTraps" type="Node2D" parent="Rooms/Room103"]
+editor/display_folded = true
+
+[node name="FloorTrap" parent="Rooms/Room103/FloorTraps" instance=ExtResource( 5 )]
+position = Vector2( 176, 192 )
+trap_used = "TrapLeft"
+
+[node name="FloorTrap2" parent="Rooms/Room103/FloorTraps" instance=ExtResource( 5 )]
+position = Vector2( 208, 192 )
+trap_used = "TrapMiddle"
+
+[node name="FloorTrap3" parent="Rooms/Room103/FloorTraps" instance=ExtResource( 5 )]
+position = Vector2( 240, 192 )
+trap_used = "TrapRight"
+
+[node name="FloorHoles" type="Node2D" parent="Rooms/Room103"]
+editor/display_folded = true
+
+[node name="FloorHole" parent="Rooms/Room103/FloorHoles" instance=ExtResource( 6 )]
+position = Vector2( 272, 112 )
+HoleUsed = "HoleNormal"
+
+[node name="Doors" type="Node2D" parent="Rooms/Room103"]
+editor/display_folded = true
+
+[node name="TopDoor" parent="Rooms/Room103/Doors" instance=ExtResource( 4 )]
+position = Vector2( 256, 16 )
+
+[node name="BottomDoor" parent="Rooms/Room103/Doors" instance=ExtResource( 4 )]
+position = Vector2( 256, 272 )
+rotation = 3.14159
+next_room_target_node = NodePath("../../../Room101")
+opened = true
+
+[node name="RightDoor" parent="Rooms/Room103/Doors" instance=ExtResource( 4 )]
+position = Vector2( 496, 144 )
+rotation = 1.5708
+
+[node name="LeftDoor" parent="Rooms/Room103/Doors" instance=ExtResource( 4 )]
+position = Vector2( 16, 144 )
+rotation = -1.5708
 
 [node name="Interface" parent="." instance=ExtResource( 7 )]

@@ -14,10 +14,11 @@ func run(obj, delta):
 		obj.fsm.next_state = obj.fsm.STATES.Idle
 		obj.position = obj.spawn_position
 		timer_finished = false
-		
+# warning-ignore:unused_argument
 func terminate(obj):
 	GameManager.player_has_fallen = false
-	GameManager.reset_traps = true
+	GameManager.player_has_respawned = true
+	
 	
 func _on_Timer_timeout():
 	timer_finished = true
